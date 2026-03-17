@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Free Consultation | Dr. Blinstrub Implant Dentistry</title>
+  <meta name="description" content="Schedule your free dental implant consultation with Dr. Jonathan Blinstrub, DDS. Call (818) 621-2123 or request an appointment online.">
+  <meta name="keywords" content="dental implant consultation, implant dentist near me, free dental consultation, teeth in one day consultation">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact-info-card {
+      background: #0f1e41; border-radius: 16px; padding: 40px;
+      color: #fff; margin-bottom: 24px;
+    }
+    .contact-info-item {
+      display: flex; gap: 16px; align-items: center;
+      padding: 16px 0; border-bottom: 1px solid rgba(198,169,108,0.15);
+    }
+    .contact-info-item:last-child { border-bottom: none; }
+    .contact-info-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(198,169,108,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; flex-shrink: 0;
+    }
+    .contact-info-item h4 { color: #c6a96c; font-family: 'Inter',sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .contact-info-item p { color: #c8d0de; margin: 0; font-size: 1rem; }
+    .contact-info-item a { color: #fff; font-weight: 600; }
+    .contact-info-item a:hover { color: #c6a96c; }
+    .form-card { background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 8px 32px rgba(0,0,0,0.06); border: 1px solid #f0ede8; }
+    .form-card h3 { margin-bottom: 8px; }
+    .form-card > p { margin-bottom: 28px; color: #666; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .hours-list { margin-top: 16px; }
+    .hours-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(198,169,108,0.1); }
+    .hours-row .day { color: #c8d0de; }
+    .hours-row .time { color: #fff; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <div class="container">
+    <a href="../index.html" class="nav-logo">
+      <span class="name">DR. BLINSTRUB</span>
+      <span class="tagline">Implant Dentistry</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="teeth-in-one-day.html">Teeth in One Day</a>
+      <a href="patient-experience.html">Patient Experience</a>
+      <a href="contact.html" class="btn btn-gold active" style="padding:10px 24px;">Free Consultation</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow">Get Started</p>
+    <h1>Schedule Your Free Consultation</h1>
+    <p>Take the first step toward a healthier, more confident smile. No obligation, no pressure.</p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="section">
+  <div class="container contact-grid">
+
+    <!-- LEFT: FORM -->
+    <div class="form-card">
+      <h3>Request a Consultation</h3>
+      <p>Fill out the form below and our team will contact you within 24 hours to schedule your appointment.</p>
+
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="(555) 123-4567">
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="you@email.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service of Interest</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option value="teeth-one-day">Teeth in One Day</option>
+            <option value="implants">Dental Implants</option>
+            <option value="full-mouth">Full-Mouth Reconstruction</option>
+            <option value="implant-supported">Implant-Supported Teeth</option>
+            <option value="consultation">General Consultation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell Us About Your Situation</label>
+          <textarea id="message" name="message" placeholder="Briefly describe your dental concerns or what you're hoping to achieve..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-lg" style="width:100%;">Request Free Consultation</button>
+        <p style="margin-top:12px; font-size:0.85rem; color:#888; text-align:center;">Your information is secure and will never be shared.</p>
+      </form>
+    </div>
+
+    <!-- RIGHT: CONTACT INFO -->
+    <div>
+      <div class="contact-info-card">
+        <h3 style="color:#fff; margin-bottom:24px;">Contact Information</h3>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#128222;</div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:8186212123">(818) 621-2123</a></p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9993;</div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@drblinstrub.com">info@drblinstrub.com</a></p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#128205;</div>
+          <div>
+            <h4>Location</h4>
+            <p>Encino, CA<br><span style="font-size:0.85rem; color:#8a96a8;">Serving the Greater Los Angeles Area</span></p>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <h4 style="color:#c6a96c; font-family:'Inter',sans-serif; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Office Hours</h4>
+          <div class="hours-list">
+            <div class="hours-row"><span class="day">Monday &ndash; Friday</span><span class="time">9:00 AM &ndash; 5:00 PM</span></div>
+            <div class="hours-row"><span class="day">Saturday</span><span class="time">By Appointment</span></div>
+            <div class="hours-row"><span class="day">Sunday</span><span class="time">Closed</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK CALL CTA -->
+      <div style="background:#faf7f2; border-radius:16px; padding:32px; text-align:center; border:1px solid #f0ede8;">
+        <p style="font-size:1.1rem; color:#0f1e41; font-weight:700; margin-bottom:8px;">Prefer to Call?</p>
+        <p style="color:#666; margin-bottom:16px;">Speak directly with our team to schedule your consultation.</p>
+        <a href="tel:8186212123" class="btn btn-navy btn-lg" style="width:100%;">Call (818) 621-2123</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Advanced Implant Solutions. Compassionate Care.</h2>
+    <p>Dr. Blinstrub and his team are ready to help you achieve the smile you deserve.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4 style="font-family:'Playfair Display',serif; font-size:1.4rem;">Dr. Blinstrub</h4>
+        <p class="tagline">Advanced Implant Dentistry</p>
+        <p>Restoring smiles with precision, compassion, and over a decade of surgical expertise.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="about.html">About Dr. Blinstrub</a>
+          <a href="services.html">Services</a>
+          <a href="teeth-in-one-day.html">Teeth in One Day</a>
+          <a href="patient-experience.html">Patient Experience</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <div class="footer-links">
+          <a href="services.html#implant-dentistry">Dental Implants</a>
+          <a href="services.html#full-mouth">Full-Mouth Reconstruction</a>
+          <a href="services.html#implant-supported">Implant-Supported Teeth</a>
+          <a href="teeth-in-one-day.html">Teeth in One Day</a>
+        </div>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <div class="footer-links">
+          <a href="tel:8186212123">(818) 621-2123</a>
+          <a href="mailto:info@drblinstrub.com">info@drblinstrub.com</a>
+          <a href="contact.html">Request Appointment</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Dr. Jonathan Blinstrub, DDS. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Request Submitted!';
+  btn.style.background = '#0a8a5c';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+  // In production, this would POST to a backend/Formspree/Netlify Forms
+  setTimeout(() => {
+    btn.textContent = 'Request Free Consultation';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.disabled = false;
+    form.reset();
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
