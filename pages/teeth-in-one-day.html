@@ -26,7 +26,7 @@
       <a href="services.html">Services</a>
       <a href="teeth-in-one-day.html" class="active">Teeth in One Day</a>
       <a href="patient-experience.html">Experience</a>
-      <a href="contact.html" class="btn btn-gold" style="padding:10px 24px;">Book Consultation</a>
+      <a href="contact.html" class="btn btn-warm" style="padding:10px 24px;">Book Consultation</a>
     </div>
     <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
@@ -61,7 +61,7 @@
       </div>
 
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
-        <a href="contact.html" class="btn btn-primary btn-lg">Am I a Candidate?</a>
+        <button onclick="openQuiz()" class="btn btn-primary btn-lg">Am I a Candidate?</button>
         <a href="tel:8186212123" class="btn btn-outline-dark btn-lg">Call (818) 621-2123</a>
       </div>
     </div>
@@ -85,7 +85,7 @@
         <div class="checklist-item"><span class="check-icon">&#10003;</span><span>Suffering from advanced gum disease</span></div>
         <div class="checklist-item"><span class="check-icon">&#10003;</span><span>Wearing uncomfortable or loose dentures</span></div>
       </div>
-      <a href="contact.html" class="btn btn-primary mt-4">Find Out If You Qualify</a>
+      <button onclick="openQuiz()" class="btn btn-primary mt-4">Find Out If You Qualify</button>
     </div>
     <div>
       <img src="../images/dr-portrait-scrubs.jpg" alt="Dr. Blinstrub ready for consultation" style="border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.06); max-height:500px; object-fit:cover; object-position:top;">
@@ -279,5 +279,165 @@
   </div>
 </footer>
 <div class="sticky-cta"><a href="contact.html" class="btn btn-warm" style="width:100%;">Book Consultation &mdash; (818) 621-2123</a></div>
+
+<!-- CANDIDACY QUIZ MODAL -->
+<div class="quiz-overlay" id="quizOverlay" onclick="if(event.target===this)closeQuiz()">
+  <div class="quiz-modal">
+    <button class="quiz-close" onclick="closeQuiz()">&times;</button>
+    <div class="quiz-header">
+      <p class="eyebrow">Free Pre-Screening</p>
+      <h3>Am I a Candidate?</h3>
+    </div>
+    <div class="quiz-progress">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgress"></div></div>
+      <div class="quiz-progress-text" id="quizStep">Question 1 of 6</div>
+    </div>
+    <div class="quiz-body" id="quizBody">
+      <div class="quiz-question active" data-step="1">
+        <h4>What best describes your current situation?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Missing one or more teeth</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Failing or broken teeth</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Uncomfortable or loose dentures</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Multiple dental issues</div>
+        </div>
+      </div>
+      <div class="quiz-question" data-step="2">
+        <h4>How many teeth are affected?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>A few teeth (1&ndash;5)</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Most of my teeth</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>All or nearly all</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>I&rsquo;m not sure</div>
+        </div>
+      </div>
+      <div class="quiz-question" data-step="3">
+        <h4>Are you experiencing any of these? <span style="font-weight:400; font-size:0.85rem; color:#999;">(Select all that apply)</span></h4>
+        <div class="quiz-options">
+          <div class="quiz-option quiz-option-multi" onclick="toggleMulti(this)"><span class="quiz-option-check">&#10003;</span>Difficulty eating or chewing</div>
+          <div class="quiz-option quiz-option-multi" onclick="toggleMulti(this)"><span class="quiz-option-check">&#10003;</span>Pain or discomfort</div>
+          <div class="quiz-option quiz-option-multi" onclick="toggleMulti(this)"><span class="quiz-option-check">&#10003;</span>Self-consciousness about my smile</div>
+          <div class="quiz-option quiz-option-multi" onclick="toggleMulti(this)"><span class="quiz-option-check">&#10003;</span>Trouble speaking clearly</div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-back" onclick="prevStep()">&larr; Back</button>
+          <button class="quiz-next" onclick="nextStep()">Continue</button>
+        </div>
+      </div>
+      <div class="quiz-question" data-step="4">
+        <h4>Have you been told you&rsquo;re not a candidate for implants?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Yes, by another dentist</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>No</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>I haven&rsquo;t consulted anyone yet</div>
+        </div>
+      </div>
+      <div class="quiz-question" data-step="5">
+        <h4>What&rsquo;s most important to you in treatment?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Getting it done as quickly as possible</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Long-term durability</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Comfort during the procedure</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Natural-looking results</div>
+        </div>
+      </div>
+      <div class="quiz-question" data-step="6">
+        <h4>How soon are you looking to move forward?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>As soon as possible</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Within the next few months</div>
+          <div class="quiz-option" onclick="selectOption(this)"><span class="quiz-option-check">&#10003;</span>Just exploring my options</div>
+        </div>
+      </div>
+      <div class="quiz-question" data-step="result">
+        <div class="quiz-result">
+          <div class="quiz-result-icon">&#10003;</div>
+          <h3>Great news &mdash; you may be an excellent candidate!</h3>
+          <p>Based on your answers, you could be a strong candidate for Teeth in One Day with Dr. Blinstrub. The best next step is a free, no-obligation consultation.</p>
+          <div class="quiz-result-summary">
+            <h5>Your Profile</h5>
+            <ul id="quizSummary"></ul>
+          </div>
+          <form class="quiz-result-form" onsubmit="handleQuizSubmit(event)">
+            <div class="form-group"><label for="quizName">Name *</label><input type="text" id="quizName" name="name" required placeholder="Your full name"></div>
+            <div class="form-group"><label for="quizEmail">Email *</label><input type="email" id="quizEmail" name="email" required placeholder="you@email.com"></div>
+            <div class="form-group"><label for="quizPhone">Phone *</label><input type="tel" id="quizPhone" name="phone" required placeholder="(555) 123-4567"></div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:8px;">Book Your Free Consultation</button>
+            <p style="margin-top:10px; font-size:0.8rem; color:#999; text-align:center;">Or call: <a href="tel:8186212123" style="color:#8a7a5a; font-weight:600;">(818) 621-2123</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let quizCurrent = 1;
+const quizTotal = 6;
+const quizAnswers = {};
+function openQuiz() {
+  quizCurrent = 1;
+  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  showStep(1);
+  document.getElementById('quizOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeQuiz() {
+  document.getElementById('quizOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function showStep(step) {
+  document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+  const target = step === 'result' ? '[data-step="result"]' : '[data-step="' + step + '"]';
+  document.querySelector(target).classList.add('active');
+  if (step === 'result') {
+    document.getElementById('quizProgress').style.width = '100%';
+    document.getElementById('quizStep').textContent = 'Complete!';
+    buildSummary();
+  } else {
+    document.getElementById('quizProgress').style.width = ((step - 1) / quizTotal * 100) + '%';
+    document.getElementById('quizStep').textContent = 'Question ' + step + ' of ' + quizTotal;
+  }
+}
+function selectOption(el) {
+  var q = el.closest('.quiz-question');
+  q.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  quizAnswers[q.dataset.step] = el.textContent.trim();
+  setTimeout(function() { nextStep(); }, 350);
+}
+function toggleMulti(el) { el.classList.toggle('selected'); }
+function nextStep() {
+  if (quizCurrent >= quizTotal) {
+    var q3 = document.querySelector('[data-step="3"]');
+    var selected = q3.querySelectorAll('.quiz-option.selected');
+    quizAnswers['3'] = Array.from(selected).map(o => o.textContent.trim()).join(', ') || 'None selected';
+    showStep('result'); return;
+  }
+  quizCurrent++; showStep(quizCurrent);
+}
+function prevStep() { if (quizCurrent > 1) { quizCurrent--; showStep(quizCurrent); } }
+function buildSummary() {
+  var list = document.getElementById('quizSummary');
+  list.innerHTML = '';
+  var labels = {'1':'Situation','2':'Teeth affected','4':'Previous consultation','5':'Priority','6':'Timeline'};
+  for (var k in quizAnswers) {
+    if (labels[k] && quizAnswers[k]) {
+      var li = document.createElement('li');
+      li.textContent = labels[k] + ': ' + quizAnswers[k];
+      list.appendChild(li);
+    }
+  }
+}
+function handleQuizSubmit(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Submitted! We\'ll be in touch.';
+  btn.style.background = '#2a7d5a';
+  btn.disabled = true;
+  setTimeout(function() { closeQuiz(); btn.textContent = 'Book Your Free Consultation'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 3000);
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeQuiz(); });
+</script>
 </body>
 </html>
